@@ -10,9 +10,13 @@ repositories {
 
 dependencies {
     //swaggerCodegen 'io.swagger:swagger-codegen-cli:2.4.2'             // Swagger Codegen V2
-    swaggerCodegen 'io.swagger.codegen.v3:swagger-codegen-cli:3.0.14'  // or Swagger Codegen V3
-    swaggerCodegen 'org.openapitools:openapi-generator-cli:4.2.0'     // or OpenAPI Generator
+    //swaggerCodegen 'io.swagger.codegen.v3:swagger-codegen-cli:3.0.14'  // or Swagger Codegen V3
+    swaggerCodegen 'org.openapitools:openapi-generator-cli:3.3.4'     // or OpenAPI Generator
 }
+
+/*configurations {
+    compile.exclude module: 'org.slf4j.slf4j-log4j12'
+}*/
 
 swaggerSources {
     doc {
@@ -21,4 +25,190 @@ swaggerSources {
             language = 'html2'
         }
     }
+
+    docS {
+        inputFile = file('src/docs/swagger/swagger.yaml')
+        code {
+            language = 'json'
+        }
+    }
 }
+
+/*task myTask {
+    dependencies {
+        swaggerCodegen 'io.swagger.codegen.v3:swagger-codegen-cli:3.0.14'
+    }
+    dependsOn generateSwaggerCodeDoc
+}
+
+task myTask2 {
+    dependencies {
+        swaggerCodegen 'io.swagger.codegen.v3:swagger-codegen-cli:3.0.14'
+    }
+    dependsOn generateSwaggerCodeDocS
+}*/
+
+/*task generateSwaggerCodeDoc(type: GenerateSwaggerCode) {
+    dependencies {
+        //swaggerCodegen 'io.swagger:swagger-codegen-cli:2.4.2'             // Swagger Codegen V2
+        swaggerCodegen 'io.swagger.codegen.v3:swagger-codegen-cli:3.0.14'  // or Swagger Codegen V3
+        //swaggerCodegen 'org.openapitools:openapi-generator-cli:4.2.2'     // or OpenAPI Generator
+    }
+
+    swaggerSources {
+        inputFile = file('src/docs/swagger/swagger.yaml')
+        code {
+            language = 'html2'
+        }
+    }
+    
+    println 'Jopa'
+}*/
+
+/*task generateSwaggerCodeAscii(type: GenerateSwaggerCode) {
+    dependencies {
+        //swaggerCodegen 'io.swagger:swagger-codegen-cli:2.4.2'             // Swagger Codegen V2
+        //swaggerCodegen 'io.swagger.codegen.v3:swagger-codegen-cli:3.0.14'  // or Swagger Codegen V3
+        swaggerCodegen 'org.openapitools:openapi-generator-cli:4.2.2'     // or OpenAPI Generator
+    }
+
+    swaggerSources {
+        inputFile = file('src/docs/swagger/swagger.yaml')
+        code {
+            language = 'ascii'
+        }
+    }
+
+    println 'Bird'
+}*/
+
+/*swaggerSources {
+    doc {
+        dependencies {
+            //swaggerCodegen 'io.swagger:swagger-codegen-cli:2.4.2'             // Swagger Codegen V2
+            swaggerCodegen 'io.swagger.codegen.v3:swagger-codegen-cli:3.0.14'  // or Swagger Codegen V3
+            //swaggerCodegen 'org.openapitools:openapi-generator-cli:4.2.0'     // or OpenAPI Generator
+        }
+        inputFile = file('src/docs/swagger/swagger.yaml')
+        code {
+            language = 'html2'
+        }
+    }
+}
+
+swaggerSources {
+    docS {
+        dependencies {
+            //swaggerCodegen 'io.swagger:swagger-codegen-cli:2.4.2'             // Swagger Codegen V2
+            //swaggerCodegen 'io.swagger.codegen.v3:swagger-codegen-cli:3.0.14'  // or Swagger Codegen V3
+            swaggerCodegen 'org.openapitools:openapi-generator-cli:4.2.0'     // or OpenAPI Generator
+        }
+        inputFile = file('src/docs/swagger/swagger.yaml')
+        code {
+            language = 'asciidoc'
+        }
+    }
+}*/
+
+
+
+/*task m {
+    dependencies {
+        swaggerCodegen 'io.swagger.codegen.v3:swagger-codegen-cli:3.0.14'
+    }
+
+    swaggerSources {
+        println 'Task M'
+        doc1 {
+            inputFile = file('src/docs/swagger/swagger.yaml')
+            code {
+                println 'Task M1'
+                language = 'html2'
+            }
+        }
+    }
+}
+
+task r {
+    dependencies {
+        swaggerCodegen 'org.openapitools:openapi-generator-cli:4.2.2'     // or OpenAPI Generator
+    }
+
+    swaggerSources {
+        println 'Task R'
+        doc {
+            inputFile = file('src/docs/swagger/swagger.yaml')
+            code {
+                println 'Task R1'
+                language = 'asciidoc'
+            }
+        }
+    }
+}
+
+task hello {
+    doLast {
+        println 'Task hello'
+    }
+}
+
+task hello(type: Jar, overwrite: true) {
+    doFirst {
+        println 'Jopa'
+    }
+}*/
+
+/*
+dependencies {
+    //swaggerCodegen 'io.swagger:swagger-codegen-cli:2.4.2'             // Swagger Codegen V2
+    //swaggerCodegen 'io.swagger.codegen.v3:swagger-codegen-cli:3.0.14'  // or Swagger Codegen V3
+    //swaggerCodegen 'org.openapitools:openapi-generator-cli:4.2.0'     // or OpenAPI Generator
+}
+*/
+
+
+
+/*
+task r(type: GenerateSwaggerCode) {
+    dependencies {
+        //swaggerCodegen 'io.swagger:swagger-codegen-cli:2.4.2'             // Swagger Codegen V2
+        //swaggerCodegen 'io.swagger.codegen.v3:swagger-codegen-cli:3.0.14'  // or Swagger Codegen V3
+        swaggerCodegen 'org.openapitools:openapi-generator-cli:4.2.0'     // or OpenAPI Generator
+    }
+    
+    println 'Jopa'
+    swaggerSources {
+        api {
+            inputFile = file('src/docs/swagger/swagger.yaml')
+            println "Blah"
+            code {
+                language = 'spring'
+            }
+        }
+    }
+}
+
+task n(type: GenerateSwaggerCode) {
+    dependencies {
+        //swaggerCodegen 'io.swagger:swagger-codegen-cli:2.4.2'             // Swagger Codegen V2
+        swaggerCodegen 'io.swagger.codegen.v3:swagger-codegen-cli:3.0.14'  // or Swagger Codegen V3
+        //swaggerCodegen 'org.openapitools:openapi-generator-cli:4.2.0'     // or OpenAPI Generator
+    }
+
+    println 'N'
+    swaggerSources {
+        doc {
+            inputFile = file('src/docs/swagger/swagger.yaml')
+            println "N1"
+            code {
+                language = 'html'
+            }
+        }
+    }
+}
+*/
+
+/*
+configurations.all {
+    exclude module: 'slf4j-log4j12'
+}*/
