@@ -1,4 +1,4 @@
 
 task doIt {
-  println 'Hello'
+  println 'Hello World'
 }
